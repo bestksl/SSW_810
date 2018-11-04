@@ -1,5 +1,4 @@
 class Grade:
-
     def __init__(self, stu_id: str, course_name: str, score: str, ins_id: str):
         self.stu_id = stu_id
         self.score = score
