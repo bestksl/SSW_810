@@ -1,0 +1,21 @@
+from .Student import Student
+from .instructor import Instructor
+from .grade import Grade
+
+
+class Utils:
+    @staticmethod
+    def read_lines(path: str):
+        lines = []
+        try:
+            file = open(path)
+        except FileNotFoundError:
+            raise FileNotFoundError(f'warning: file({path}) not found')
+        with file:
+            for line in file:
+                attr = line.strip().split(f"\t")
+                if len(attr) != 0 or attr is not None:
+                    lines.append(attr)
+                else:
+                    break
+            return lines
