@@ -1,5 +1,6 @@
-# Haoxuan Li
-# Student ID: 10434197
+# @Author: HaoxuanLi
+# @Date 2018/11/4
+# CWID: 10434197
 from collections import defaultdict
 from haoxuanli_810_09.People import People
 

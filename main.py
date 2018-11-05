@@ -1,5 +1,6 @@
-# Haoxuan Li
-# Student ID: 10434197
+# @Author: HaoxuanLi
+# @Date 2018/11/4
+# CWID: 10434197
 
 import os
 
@@ -18,6 +19,9 @@ def main():
 
     # print instructor table
     STEVEMS.show_instructors()
+
+    # print major table
+    STEVEMS.show_majors()
 
 
 if __name__ == '__main__':

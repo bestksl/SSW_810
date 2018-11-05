@@ -1,3 +1,6 @@
+# @Author: HaoxuanLi
+# @Date 2018/11/4
+# CWID: 10434197
 from .Student import Student
 from .instructor import Instructor
 from .grade import Grade
