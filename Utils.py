@@ -21,4 +21,4 @@ class Utils:
                     lines.append(attr)
                 else:
                     break
-            return lines
+        return lines
