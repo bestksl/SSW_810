@@ -12,7 +12,7 @@ class Major:
     def get_remaining_courses(self, stu_courses: dict):
         remaining_dict = dict()
         for course_name in self.courses.keys():
-            if course_name not in stu_courses.keys() or stu_courses[course_name] == "F":
+            if course_name not in stu_courses.keys():
                 remaining_dict[course_name] = self.courses[course_name]
         return remaining_dict
 
