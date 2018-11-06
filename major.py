@@ -1,8 +1,6 @@
 # @Author: HaoxuanLi  
 # @Date 2018/11/4
 # CWID: 10434197
-
-
 class Major:
     def __init__(self, name: str):
         self.name = name
