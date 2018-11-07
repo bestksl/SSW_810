@@ -26,11 +26,11 @@ class Student(People):
         remaining_required = [course for course in remaining_courses.keys() if
                               remaining_courses[course] == "R"]
         return [self.cwid, self.name, self.major.name,
-                (lambda:list(self.get_pass_courses().keys()) if len(self.get_pass_courses().keys()) > 0 else None)(),
+                (lambda: list(self.get_pass_courses().keys()) if len(self.get_pass_courses().keys()) > 0 else None)(),
                 remaining_required,
                 (lambda: None if len(remaining_electives) < len(
-            [course for course in self.major.courses.keys() if
-             self.major.courses[course] == "E"]) else remaining_electives)()]
+                    [course for course in self.major.courses.keys() if
+                     self.major.courses[course] == "E"]) else remaining_electives)()]
 
     def get_pass_courses(self):  # <--------------- Here is the change!!!!!!!!!!!
         pass_courses_names = [c_name for c_name in self.Courses.keys() if self.Courses[c_name] != "F"]
@@ -41,4 +41,4 @@ class Student(People):
 
     @staticmethod
     def get_fields():
-        return ["CWID", "Name", "Major", "Completed Course", "Required", "Electives"]
+        return ["CWID", "Name", "Major", "Completed Course", "Remaining Required", "Remaining Electives"]

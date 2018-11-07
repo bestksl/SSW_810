@@ -39,7 +39,7 @@ class MyTest(unittest.TestCase):
                 attrs = line.strip().split("\t")
                 random_instructor = Instructor(attrs[0], attrs[1], attrs[2])
                 break
-        # compare instructors
+        # compare instructors   `
         self.assertTrue(self.compare(random_instructor, self.stevens.instructors[random_instructor.cwid]))
 
     # compare major
