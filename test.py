@@ -4,10 +4,10 @@
 import os
 import unittest
 import random
-from haoxuanli_810_09.Student import Student
+from haoxuanli_810_09.domain_layer.Student import Student
 from haoxuanli_810_09.Repository import Repository
-from haoxuanli_810_09.major import Major
-from haoxuanli_810_09.instructor import Instructor
+from haoxuanli_810_09.domain_layer.major import Major
+from haoxuanli_810_09.domain_layer.instructor import Instructor
 
 
 class MyTest(unittest.TestCase):

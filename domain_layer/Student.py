@@ -2,7 +2,7 @@
 # @Date 2018/11/4
 # CWID: 10434197
 from haoxuanli_810_09.People import People
-from haoxuanli_810_09.major import Major
+from haoxuanli_810_09.domain_layer.major import Major
 
 
 class Student(People):
