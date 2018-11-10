@@ -5,7 +5,7 @@ from haoxuanli_810_09.domain_layer.Student import Student
 from haoxuanli_810_09.domain_layer.instructor import Instructor
 from haoxuanli_810_09.domain_layer.grade import Grade
 import os
-from haoxuanli_810_09.Utils import Utils
+from haoxuanli_810_09.FileReader import Utils
 from prettytable import PrettyTable
 from operator import itemgetter
 from haoxuanli_810_09.domain_layer.major import Major
