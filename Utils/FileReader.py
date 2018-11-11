@@ -3,7 +3,7 @@
 # CWID: 10434197
 
 
-class Utils:
+class FileReader:
     @staticmethod
     def read_lines(path: str):
         lines = []

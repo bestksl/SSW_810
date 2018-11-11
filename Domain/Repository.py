@@ -5,7 +5,7 @@ from haoxuanli_810_09.Domain.Student import Student
 from haoxuanli_810_09.Domain.instructor import Instructor
 from haoxuanli_810_09.Domain.grade import Grade
 import os
-from haoxuanli_810_09.Utils.FileReader import Utils
+from haoxuanli_810_09.Utils.FileReader import FileReader
 from prettytable import PrettyTable
 from operator import itemgetter
 from haoxuanli_810_09.Domain.major import Major
@@ -27,26 +27,26 @@ class Repository:
         self.read_grades(self.grades_path)
 
     def read_student(self, path: str):
-        for cwid, name, major_name in Utils.read_lines(path):
+        for cwid, name, major_name in FileReader.read_lines(path):
             student = Student(cwid, name, self.majors[major_name])
             self.students[student.cwid] = student
         return self.students
 
     def read_majors(self, path: str):
-        for major_name, course_type, course_name in Utils.read_lines(path):
+        for major_name, course_type, course_name in FileReader.read_lines(path):
             if major_name not in self.majors.keys():
                 major = Major(major_name)
                 self.majors[major_name] = major
             self.majors[major_name].courses[course_name] = course_type
 
     def read_instructors(self, path: str):
-        for cwid, name, dept in Utils.read_lines(path):
+        for cwid, name, dept in FileReader.read_lines(path):
             instructor = Instructor(cwid, name, dept)
             self.instructors[instructor.cwid] = instructor
         return self.instructors
 
     def read_grades(self, path: str):
-        for s_cwid, course_name, score, ins_id in Utils.read_lines(path):
+        for s_cwid, course_name, score, ins_id in FileReader.read_lines(path):
             grade = Grade(s_cwid, course_name, score, ins_id)
             self.grades[grade.stu_id, grade.course_name] = grade
         return self.grades

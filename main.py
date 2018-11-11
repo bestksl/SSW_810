@@ -4,7 +4,7 @@
 
 import os
 
-from haoxuanli_810_09.Repository import Repository
+from haoxuanli_810_09.Domain.Repository import Repository
 
 
 def main():
