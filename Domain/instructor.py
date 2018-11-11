@@ -2,7 +2,7 @@
 # @Date 2018/11/4
 # CWID: 10434197
 from collections import defaultdict
-from haoxuanli_810_09.People import People
+from haoxuanli_810_09.Interface.People import People
 
 
 class Instructor(People):

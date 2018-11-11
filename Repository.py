@@ -1,14 +1,14 @@
 # @Author: HaoxuanLi
 # @Date 2018/11/4
 # CWID: 10434197
-from haoxuanli_810_09.domain_layer.Student import Student
-from haoxuanli_810_09.domain_layer.instructor import Instructor
-from haoxuanli_810_09.domain_layer.grade import Grade
+from haoxuanli_810_09.Domain.Student import Student
+from haoxuanli_810_09.Domain.instructor import Instructor
+from haoxuanli_810_09.Domain.grade import Grade
 import os
-from haoxuanli_810_09.FileReader import Utils
+from haoxuanli_810_09.Utils.FileReader import Utils
 from prettytable import PrettyTable
 from operator import itemgetter
-from haoxuanli_810_09.domain_layer.major import Major
+from haoxuanli_810_09.Domain.major import Major
 
 
 class Repository:
