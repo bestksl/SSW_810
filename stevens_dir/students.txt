@@ -1,3 +1,4 @@
+CWID	Name	Major
 10103	Baldwin, C	SFEN
 10115	Wyatt, X	SFEN
 10172	Forbes, I	SFEN

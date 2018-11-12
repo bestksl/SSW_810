@@ -29,6 +29,7 @@ class Dao:
             except Exception as e:
                 self.con.rollback()
                 print(f"some thing wrong: {e} and the database {self.db_name} was rollback")
+                raise e
             finally:
                 self.con.commit()
                 self.con.close()
@@ -38,6 +39,7 @@ class Dao:
 
     @open_close
     def execute_sql(self, *args):
+        print(args)
         if len(args) == 1:
             return args[0]
         else:

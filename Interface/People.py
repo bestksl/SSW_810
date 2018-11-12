@@ -13,7 +13,3 @@ class People(metaclass=abc.ABCMeta):
     def pt_show(self):
         pass
 
-    @staticmethod
-    @abc.abstractmethod
-    def get_fields():
-        pass
