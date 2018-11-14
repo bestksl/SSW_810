@@ -3,10 +3,11 @@
 # CWID: 10434197
 import os
 
+from prettytable import PrettyTable
+
+from haoxuanli_810_09.Service.grade_services import GradeService
 from haoxuanli_810_09.Service.instructor_services import InstructorService
 from haoxuanli_810_09.Service.student_services import StudentService
-from haoxuanli_810_09.Service.grade_services import GradeService
-from prettytable import PrettyTable
 
 
 class HW11_controller():
