@@ -8,7 +8,7 @@ class Dao:
     __instance = None
 
     def __init__(self):
-        self.db_name = "test.db"
+        self.db_name = "test2.db"
         self.con = None
 
     def open_close(func):
@@ -39,11 +39,27 @@ class Dao:
 
     @open_close
     def execute_sql(self, *args):
-        print(args)
         if len(args) == 1:
             return args[0]
         else:
             return [item for item in args]
+
+    def if_exist(self, table_name: str):
+        if self.execute_sql(f"SELECT COUNT(*) FROM sqlite_master where type='table' and name='{table_name}'")[0][
+            0] == 0:
+            return False
+        else:
+            return True
+
+    def create_table(self, table_name: str, header: tuple):
+        if self.if_exist(table_name):
+            pass
+        else:
+            sql = f'''create table {table_name} ('''
+            for i in range(0, len(header)):
+                sql += f'''{header[i]},'''
+            sql = sql[:-1] + ''');'''
+            self.execute_sql(sql)
 
     @staticmethod
     def get_instance():  # save memory

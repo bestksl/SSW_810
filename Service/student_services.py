@@ -3,6 +3,7 @@
 # CWID: 10434197
 from haoxuanli_810_09.DAO.dao import Dao
 from haoxuanli_810_09.Domain.Student import Student
+from haoxuanli_810_09.Utils.FileReader import FileReader
 
 
 class StudentService:
@@ -11,23 +12,48 @@ class StudentService:
         self.table_exist = False
 
     def save_student(self, student: Student):
-        if not self.table_exist:
+        if not self.dao.if_exist("student"):
             raise Exception(f"Error: student table not exist")
         sql = '''insert into student values (?,?,?)'''
         args = (student.cwid, student.name, student.major_name)
         self.dao.execute_sql(sql, args)
 
     def create_student_table(self, header: tuple):
-        sql = f'''create table student ('''
-        for i in range(0, len(header)):
-            sql += f'''{header[i]},'''
-        sql = sql[:-1] + ''');'''
-        self.dao.execute_sql(sql)
-        self.table_exist = True
+        self.dao.create_table("student", header)
 
     def find_student(self, cwid: str):
-        sql = '''select cwid, name, major_name from student where student.cwid=?'''
+        sql = '''select CWID, Name, Major from student where student.CWID=?'''
         arg = (cwid,)
         result_tuple = self.dao.execute_sql(sql, arg)[0]
         result_stu = Student(result_tuple[0], result_tuple[1], result_tuple[2])
         return result_stu
+
+    def get_stu_num(self):
+        if not self.dao.if_exist("student"):
+            sql = ''
+            return
+
+    def read_student_from_file(self, path: str):
+        if self.dao.if_exist("student"):
+            return
+        lines = FileReader.read_lines(path)
+        header = [attr + " varchar(50)" for attr in lines[0]]
+        header[0] += " PRIMARY KEY"
+        self.create_student_table(tuple(header))
+        for attr in lines[1:len(lines)]:
+            stu = Student(attr[0], attr[1], attr[2])
+            self.save_student(stu)
+            print(stu.cwid, stu.name, stu.major_name)
+
+    def num_of_stu_by_major(self):
+        sql = '''select Major, count(*) from student group by student.Major'''
+        result = self.dao.execute_sql(sql)
+        return result
+
+    def get_all_student(self):
+        stu_list = []
+        sql = '''select CWID, Name, Major from student'''
+        result_list = self.dao.execute_sql(sql)
+        for result_tuple in result_list:
+            stu_list.append(Student(result_tuple[0], result_tuple[1], result_tuple[2]))
+        return stu_list
