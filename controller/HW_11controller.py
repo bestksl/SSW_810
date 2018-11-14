@@ -29,19 +29,23 @@ class HW11_controller:
 
     def answers(self):
         # question 1
+        print("Q1--------")
         stu = self.ss.find_student("11461")
         print("student is", stu.cwid, stu.name, stu.major_name)
 
         # question 2
+        print("Q2--------")
         result_list = self.ss.num_of_stu_by_major()
         for result in result_list:
             print(f"{result[0]}: student num = {result[1]}")
 
         # question 3
+        print("Q3--------")
         result = self.gs.most_frequent_grade()
         print(f"most frequent score is {result[0][0]}, frequency is {result[0][1]}")
 
         # question 4
+        print("Q4--------")
         stu_list = self.ss.get_all_student()
         for stu in stu_list:
             courses = self.gs.find_signed_courses(stu.cwid)
@@ -50,6 +54,7 @@ class HW11_controller:
                 print(f"stu_CWID: {stu.cwid} stu_Name: {stu.name} major: {stu.major_name} grade: {grade.score}")
 
         # question 5
+        print("Q5--------")
         name_list = []
         grades = self.gs.get_grades_by_course_name("SSW 540")
         for grade in grades:
@@ -58,6 +63,7 @@ class HW11_controller:
         print("they are:", name_list)
 
         # question 6
+        print("Q6--------")
         table = PrettyTable()
         table.field_names = ["Ins_CWID", "Ins_Name", "Department", "CourseTaught", "Stu_Num"]
         instructors = self.i_s.get_all_instructors()
