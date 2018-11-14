@@ -4,7 +4,6 @@
 import unittest
 
 from haoxuanli_810_09.DAO.dao import Dao
-from haoxuanli_810_09.Domain.Student import Student
 from haoxuanli_810_09.Domain.grade import Grade
 from haoxuanli_810_09.Domain.instructor import Instructor
 from haoxuanli_810_09.Service.grade_services import GradeService
