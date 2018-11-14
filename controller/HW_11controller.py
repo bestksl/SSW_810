@@ -10,7 +10,7 @@ from haoxuanli_810_09.Service.instructor_services import InstructorService
 from haoxuanli_810_09.Service.student_services import StudentService
 
 
-class HW11_controller():
+class HW11_controller:
 
     def __init__(self, path: str):
         # init services layer
