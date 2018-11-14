@@ -21,7 +21,8 @@ class GradeService:
         self.dao.create_table("grade", header)
 
     def find_grade(self, stu_id: str, course_name: str):
-        sql = '''select Student_CWID, Course, Grade,Instructor_CWID from grade where grade.Student_CWID=? and grade.Course=?'''
+        sql = '''select Student_CWID, Course, Grade,Instructor_CWID from grade where grade.Student_CWID=? 
+        and grade.Course=?'''
         arg = (stu_id, course_name)
         result_tuple = self.dao.execute_sql(sql, arg)[0]
         result_grade = Grade(result_tuple[0], result_tuple[1], result_tuple[2], result_tuple[3])
@@ -49,5 +50,23 @@ class GradeService:
         result = self.dao.execute_sql(sql, arg)
         return result
 
-    def get_grades_course_name(self):
-        pass
+    def get_grades_by_course_name(self, course_name: str):
+        sql = '''select Student_CWID, Course, Grade,Instructor_CWID from grade where grade.Course=?'''
+        arg = (course_name,)
+        result_tuple = self.dao.execute_sql(sql, arg)
+        result_grades = []
+        for tuple_item in result_tuple:
+            result_grades.append(Grade(tuple_item[0], tuple_item[1], tuple_item[2], tuple_item[3]))
+        return result_grades
+
+    def get_courses_by_ins(self, ins_id: str):
+        sql = '''select Course from grade where grade.Instructor_CWID=?'''
+        arg = (ins_id,)
+        result_tuple = self.dao.execute_sql(sql, arg)
+        return result_tuple
+
+    def get_stu_num_of_courses(self, course_name: str):
+        sql = '''select count(*) from grade where grade.Course=?  '''
+        arg = (course_name,)
+        result_tuple = self.dao.execute_sql(sql, arg)
+        return result_tuple

@@ -6,7 +6,7 @@ import os
 from haoxuanli_810_09.Service.instructor_services import InstructorService
 from haoxuanli_810_09.Service.student_services import StudentService
 from haoxuanli_810_09.Service.grade_services import GradeService
-from haoxuanli_810_09.Service.major_services import MajorService
+from prettytable import PrettyTable
 
 
 class HW11_controller():
@@ -49,4 +49,21 @@ class HW11_controller():
                 print(f"stu_CWID: {stu.cwid} stu_Name: {stu.name} major: {stu.major_name} grade: {grade.score}")
 
         # question 5
-        name_list=[]
+        name_list = []
+        grades = self.gs.get_grades_by_course_name("SSW 540")
+        for grade in grades:
+            stu = self.ss.find_student(grade.stu_id)
+            name_list.append(stu.name)
+        print("they are:", name_list)
+
+        # question 6
+        table = PrettyTable()
+        table.field_names = ["Ins_CWID", "Ins_Name", "Department", "CourseTaught", "Stu_Num"]
+        instructors = self.i_s.get_all_instructors()
+        for ins in instructors:
+            courses = self.gs.get_courses_by_ins(ins.cwid)
+            for course_name in courses:
+                num = self.gs.get_stu_num_of_courses(course_name[0])
+                table.add_row([ins.cwid, ins.name, ins.dept, course_name[0], num[0][0]])
+
+        print(table.get_string())

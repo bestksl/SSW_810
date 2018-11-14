@@ -37,3 +37,11 @@ class InstructorService:
         for attr in lines[1:len(lines)]:
             ins = Instructor(attr[0], attr[1], attr[2])
             self.save_instructor(ins)
+
+    def get_all_instructors(self):
+        ins_list = []
+        sql = '''select CWID, Name, DEPT  from instructor'''
+        result_list = self.dao.execute_sql(sql)
+        for result_tuple in result_list:
+            ins_list.append(Instructor(result_tuple[0], result_tuple[1], result_tuple[2]))
+        return ins_list
